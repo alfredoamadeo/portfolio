@@ -4,12 +4,13 @@ import { ModalsProvider } from '@mantine/modals';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
 import { AppRouter } from './lib/AppRouter';
+import { theme, cssVariablesResolver } from './config/theme';
 
 function App() {
   return (
     <>
       <ColorSchemeScript />
-      <MantineProvider>
+      <MantineProvider theme={theme} cssVariablesResolver={cssVariablesResolver}>
         <ModalsProvider>
           <Notifications />
           <AppRouter />

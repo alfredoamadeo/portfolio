@@ -20,8 +20,9 @@ export const UI_CONSTANTS = {
 
 export const TAB_CONFIG = {
   ABOUT: { value: 'about', label: 'About' },
-  RESUME: { value: 'experience', label: 'Work Experience' },
+  EXPERIENCE: { value: 'experience', label: 'Work Experience' },
   PORTFOLIO: { value: 'portfolio', label: 'Portfolio' },
+  //EDUCATION: { value: 'education', label: 'Education' },
   CONTACT: { value: 'contact', label: 'Contact' },
 } as const;
 

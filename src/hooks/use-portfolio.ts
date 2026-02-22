@@ -9,6 +9,7 @@ const PATH_TO_TAB_MAP = {
   [PortfolioPaths.ABOUT]: 'about',
   [PortfolioPaths.EXPERIENCE]: 'experience',
   [PortfolioPaths.PORTFOLIO]: 'portfolio',
+  //[PortfolioPaths.EDUCATION]: 'education',
   [PortfolioPaths.CONTACT]: 'contact',
 } as const;
 
@@ -17,6 +18,7 @@ const TAB_TO_PATH_MAP = {
   about: PortfolioPaths.ABOUT,
   experience: PortfolioPaths.EXPERIENCE,
   portfolio: PortfolioPaths.PORTFOLIO,
+  //education: PortfolioPaths.EDUCATION,
   contact: PortfolioPaths.CONTACT,
 } as const;
 

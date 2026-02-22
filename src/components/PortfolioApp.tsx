@@ -28,7 +28,7 @@ const SECTION_COMPONENTS = {
 } as const;
 
 export function PortfolioApp() {
-  const { activeTab, setActiveTab, opened, toggle, close, isMobile } = usePortfolio();
+  const { activeTab, setActiveTab, opened, toggle, close } = usePortfolio();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [showFooter, setShowFooter] = useState<boolean>(false);
 
@@ -62,9 +62,13 @@ export function PortfolioApp() {
       <AppShell.Header>
         <Group h="100%" w="100%" px={UI_CONSTANTS.SPACING.MEDIUM} justify="space-between">
           <Group>
-            {isMobile && (
-              <Burger opened={opened} onClick={toggle} size={UI_CONSTANTS.SPACING.SMALL} />
-            )}
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              size={UI_CONSTANTS.SPACING.SMALL}
+              hiddenFrom="md"
+              transitionDuration={300}
+            />
             <img src="ama_logo_simple.png" style={{ width: 80, height: 40 }} />
             {/* <Logo width={100} height={50} /> */}
           </Group>
@@ -91,6 +95,9 @@ export function PortfolioApp() {
         padding={UI_CONSTANTS.SPACING.MEDIUM}
         hiddenFrom="md"
         position="left"
+        zIndex={200}
+        transitionProps={{ duration: 300, transition: "slide-right" }}
+        styles={{ body: { overflowY: "auto", height: "calc(100vh - 3.75rem)" } }}
       >
         <ProfileAside />
       </Drawer>
@@ -139,7 +146,7 @@ export function PortfolioApp() {
               color: "var(--mantine-color-text)",
             }}
           >
-            © 2025 Alfredo III Amadeo. All rights reserved.
+            © 2026 Alfredo III Amadeo. All rights reserved.
           </Box>
         )}
       </AppShell.Main>

@@ -1,12 +1,12 @@
 import { IconAward, IconBriefcase, IconCode, IconUsers } from '@tabler/icons-react';
-import type { Project, Experience } from './types';
+import type { Project, Experience, Education } from './types';
 
 export const projects: Project[] = [
   {
     id: '1',
     title: 'Enhanced Account Receivables Management System',
     description: 'A web-based application for internal use to streamline the management of docket cases, collection tasks, and receivable monitoring from registered individuals and businesses with outstanding tax obligations.',
-    image: '/public/arms_project.png',
+    images: ['/public/arms_project.png', '/public/arms_project-2.png'],
     tags: ['VUE.JS', '.NET', 'MySQL'],
     liveUrl: '/maintenance',
     codeUrl: '/maintenance'
@@ -15,7 +15,7 @@ export const projects: Project[] = [
     id: '2',
     title: 'Financial Management Information System',
     description: 'A Web-based application for Metropolitan Water & Sewerage System to streamline financial management Information Process',
-    image: '/public/fmis_project.png',
+    images: ['/public/fmis_project.png', '/public/fmis_project-2.png'],
     tags: ['React.ts', '.NET', 'MSSQL'],
     liveUrl: '/maintenance',
     codeUrl: '/maintenance'
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     id: '3',
     title: 'Weather API',
     description: 'A RESTful API for fetching weather data for multiple cities using OpenWeatherMap API.',
-    image: '',
+    images: [],
     tags: ['.NET', 'OpenWeather API'],
     liveUrl: '/maintenance',
     codeUrl: 'https://github.com/alfredo0021/WeatherWebServices'
@@ -33,19 +33,41 @@ export const projects: Project[] = [
     id: '4',
     title: 'Window Services',
     description: '.NET Core Windows Service that watches Folder1, moves new files to Folder2, and logs to Event Viewer plus a rolling log file.',
-    image: '',
+    images: [],
     tags: ['.NET', 'Event Viewer', 'Rolling Log File'],
     liveUrl: '/maintenance',
     codeUrl: 'https://github.com/alfredo0021/WindowService'
-  }
+  },
+  {
+    id: '5',
+    title: 'OMMS-Next',
+    description: '.NET Core Windows Service that watches Folder1, moves new files to Folder2, and logs to Event Viewer plus a rolling log file.',
+    images: ['/public/omms-1.png', '/public/omms-2.png', '/public/omms-3.png'],
+    tags: ['.NET', 'Event Viewer', 'Rolling Log File'],
+    liveUrl: '/maintenance',
+    codeUrl: 'https://github.com/alfredo0021/WindowService'
+  },
 ];
 
 export const experiences: Experience[] = [
   {
-    id: '1',
+    id: '4',
+    title: 'API Developer',
+    company: 'Information Professionals, Inc.',
+    period: ' 2025 - Present',
+    description: 'I was an API developer at Information Professionals, Inc.',
+    achievements: [
+      'Created the API project/module from scratch and deployed it',
+      'Fixed and debugged the API issues and errors',
+      'Collaborated with BA, front-end, and QA teams to deliver sprint features with high acceptance and minimal rework',
+      'Debugged the API issues and errors using Postman',
+    ]
+  },
+  {
+    id: '3',
     title: 'Software Engineer',
     company: 'Simplevia Technologies Inc.',
-    period: ' 2023 - Present',
+    period: ' 2023 - 2025',
     description: 'I specialize in backend development, business analysis, and database administration — helping organizations streamline processes and deliver reliable software solutions..',
     achievements: [
       'Designed and deployed API modules in .NET 8.0 using modular architecture, enhancing scalability and maintainability',
@@ -62,6 +84,20 @@ export const experiences: Experience[] = [
   },
   {
     id: '2',
+    title: 'Rider and Delivery Assistant',
+    company: 'Lalamove',
+    period: ' 2022 - 2023',
+    description: 'I was a rider and delivery assistant at Lalamove, a delivery service that allows users to request a ride and delivery service from their phone.',
+    achievements: [
+      'Delivered packages and goods to customers in a timely and efficient manner',
+      'Maintained a clean and organized delivery vehicle',
+      'Communicated with customers to ensure delivery satisfaction',
+      'Handled cash transactions and provided change to customers',
+      'Maintained a safe and secure delivery environment'
+    ]
+  },
+  {
+    id: '1',
     title: 'Service Crew',
     company: 'McDonalds',
     period: '2019 - 2022',
@@ -77,6 +113,16 @@ export const experiences: Experience[] = [
   }
 ];
 
+export const education: Education[] = [
+  {
+    id: '1',
+    degree: 'Bachelor of Science in Computer Science',
+    school: 'Pamantasan ng Lungsod ng Maynila',
+    location: 'Manila',
+    period: '2020 - 2025',
+  },
+];
+
 export const skills = [
   'JavaScript', 'React.js', 'Basic Type Script',
   'Dotnet', 'C#', 'Java', 'Python', 
@@ -86,12 +132,12 @@ export const skills = [
 export const quickFacts = [
   {
     icon: IconCode,
-    title: '2+ Years',
+    startDate: new Date(2023, 7),
     description: 'Software Engineering Experience',
   },
   {
     icon: IconBriefcase,
-    title: '4+ Years',
+    startDate: new Date(2019, 8),
     description: 'Other Work Field Experience',
   },
   {

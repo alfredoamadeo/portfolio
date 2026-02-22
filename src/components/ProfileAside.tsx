@@ -31,7 +31,7 @@ export function ProfileAside({ profile = {} }: ProfileAsideProps) {
           style={{
             objectFit: "cover",
             objectPosition: "center",
-            minWidth: "180px",
+            minWidth: "150px",
             minHeight: "18  0px",
           }}
         />

@@ -25,7 +25,7 @@ export function WorkExperience() {
           Professional Experience
         </Title>
         <Timeline active={-1} bulletSize={24} lineWidth={2}>
-          {experiences.map((exp) => (
+          {[...experiences].sort((a, b) => Number(b.id) - Number(a.id)).map((exp) => (
             <Timeline.Item
               key={exp.id}
               bullet={<IconBriefcase size={12} />}
@@ -56,7 +56,7 @@ export function WorkExperience() {
                       spacing="xs"
                       size="sm"
                       icon={
-                        <ThemeIcon color="green" size={16} radius="xl">
+                        <ThemeIcon color="pink" size={16} radius="xl">
                           <IconCheck size={10} />
                         </ThemeIcon>
                       }

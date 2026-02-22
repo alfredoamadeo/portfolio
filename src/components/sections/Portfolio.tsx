@@ -11,8 +11,11 @@ import {
   Box,
   Anchor,
 } from '@mantine/core';
+import { Carousel } from '@mantine/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 import { IconExternalLink, IconBrandGithub } from '@tabler/icons-react';
 import { projects } from '../../data';
+import '@mantine/carousel/styles.css';
 
 export function Portfolio() {
   return (
@@ -40,12 +43,31 @@ export function Portfolio() {
             h="100%"
           >
             <Card.Section>
-              <Image
-                src={project.image}
-                height={200}
-                alt={project.title}
-                fallbackSrc="https://placehold.co/400x200?text=Project+Image"
-              />
+              {project.images.length > 1 ? (
+                <Carousel
+                  withIndicators
+                  emblaOptions={{ loop: true }}
+                  plugins={[Autoplay({ delay: 3000, stopOnInteraction: false })]}
+                >
+                  {project.images.map((src, i) => (
+                    <Carousel.Slide key={i}>
+                      <Image
+                        src={src}
+                        height={200}
+                        alt={`${project.title} ${i + 1}`}
+                        fallbackSrc="https://placehold.co/400x200?text=Project+Image"
+                      />
+                    </Carousel.Slide>
+                  ))}
+                </Carousel>
+              ) : (
+                <Image
+                  src={project.images[0]}
+                  height={200}
+                  alt={project.title}
+                  fallbackSrc="https://placehold.co/400x200?text=Project+Image"
+                />
+              )}
             </Card.Section>
 
             <Stack gap="md" mt="md" h="100%">
@@ -61,7 +83,7 @@ export function Portfolio() {
               <Box>
                 <Group gap="xs" mb="md">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} size="sm" variant="light" color="blue">
+                    <Badge key={tag} size="sm" variant="light" color="violet">
                       {tag}
                     </Badge>
                   ))}

@@ -24,6 +24,10 @@ const router = createBrowserRouter([
         path: PortfolioPaths.PORTFOLIO,
         element: null, 
       },
+      // {
+      //   path: PortfolioPaths.EDUCATION,
+      //   element: null,
+      // },
       {
         path: PortfolioPaths.CONTACT,
         element: null, 

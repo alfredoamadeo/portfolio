@@ -1,6 +1,18 @@
 import { Stack, Title, Text, SimpleGrid, Card, Badge, Group, Box, ThemeIcon } from "@mantine/core";
 import { skills, quickFacts } from "../../data";
 
+function getYearsFrom(startDate: Date): number {
+  const now = new Date();
+  let years = now.getFullYear() - startDate.getFullYear();
+  if (
+    now.getMonth() < startDate.getMonth() ||
+    (now.getMonth() === startDate.getMonth() && now.getDate() < startDate.getDate())
+  ) {
+    years--;
+  }
+  return years;
+}
+
 export function About() {
   return (
     <Stack gap="xl">
@@ -29,7 +41,7 @@ export function About() {
         </Title>
         <Group gap="xs" mb="lg">
           {skills.map((skill) => (
-            <Badge key={skill} size="lg" variant="light" color="blue">
+            <Badge key={skill} size="lg" variant="light" color="violet">
               {skill}
             </Badge>
           ))}
@@ -44,11 +56,11 @@ export function About() {
           {quickFacts.map((fact, index) => (
             <Card key={index} padding="md" shadow="sm" radius="md">
               <Stack align="center" gap="sm">
-                <ThemeIcon size={40} radius="md" variant="light" color="blue">
+                <ThemeIcon size={40} radius="md" variant="light" color="violet">
                   <fact.icon size={20} />
                 </ThemeIcon>
                 <Text fw={600} size="lg" ta="center">
-                  {fact.title}
+                  {fact.startDate ? `${getYearsFrom(fact.startDate)}+ Years` : fact.title}
                 </Text>
                 <Text size="sm" c="dimmed" ta="center">
                   {fact.description}

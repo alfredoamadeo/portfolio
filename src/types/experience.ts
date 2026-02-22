@@ -7,3 +7,11 @@ export interface Experience {
   achievements: string[];
 }
 
+export interface Education {
+  id: string;
+  degree: string;
+  school: string;
+  location: string;
+  period: string;
+}
+

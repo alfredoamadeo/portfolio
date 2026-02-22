@@ -10,7 +10,7 @@ import {
 export const profileData = {
   avatarUrl: "ama_profile_enhanced.jpg",
   name: "Alfredo III Mendoza Amadeo",
-  title: "Junior to Mid-level Web Developer",
+  title: "Software Engineer",
   tagline: "Passionate about coding and exploring new technologies to create innovative solutions",
   contacts: [
     {
