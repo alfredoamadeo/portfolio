@@ -22,30 +22,21 @@ export const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'Weather API',
-    description: 'A RESTful API for fetching weather data for multiple cities using OpenWeatherMap API.',
-    images: [],
-    tags: ['.NET', 'OpenWeather API'],
+    title: 'MKT-Group Web Application',
+    description: 'A web-based application for MKT-Group to streamline the management of their business. It is a platform for MKT-Group to manage their business and customers.',
+    images: ['/public/mktgroup-1.png', '/public/mktgroup-2.png', '/public/mktgroup-3.png', '/public/mktgroup-4.png'],
+    tags: ['.NET', 'React.ts', 'MSSQL'],
     liveUrl: '/maintenance',
-    codeUrl: 'https://github.com/alfredo0021/WeatherWebServices'
+    codeUrl: '/maintenance'
   },
   {
     id: '4',
-    title: 'Window Services',
-    description: '.NET Core Windows Service that watches Folder1, moves new files to Folder2, and logs to Event Viewer plus a rolling log file.',
-    images: [],
-    tags: ['.NET', 'Event Viewer', 'Rolling Log File'],
-    liveUrl: '/maintenance',
-    codeUrl: 'https://github.com/alfredo0021/WindowService'
-  },
-  {
-    id: '5',
     title: 'OMMS-Next',
-    description: '.NET Core Windows Service that watches Folder1, moves new files to Folder2, and logs to Event Viewer plus a rolling log file.',
+    description: 'A web-based platform for OMMS-Next that serves as an accounting and merchandising system, helping manage sales, customers, and business operations in a streamlined way.',
     images: ['/public/omms-1.png', '/public/omms-2.png', '/public/omms-3.png'],
-    tags: ['.NET', 'Event Viewer', 'Rolling Log File'],
+    tags: ['.NET', 'React.ts', 'MSSQL'],
     liveUrl: '/maintenance',
-    codeUrl: 'https://github.com/alfredo0021/WindowService'
+    codeUrl: '/maintenance'
   },
 ];
 
@@ -142,7 +133,7 @@ export const quickFacts = [
   },
   {
     icon: IconUsers,
-    title: '2 Teams',
+    title: '5 Teams',
     description: 'Worked on Collaborative Projects',
   },
   {

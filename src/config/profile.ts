@@ -1,6 +1,5 @@
 import {
   IconMail,
-  IconPhone,
   IconMapPin,
   IconBrandGithub,
   IconBrandLinkedin,
@@ -15,13 +14,8 @@ export const profileData = {
   contacts: [
     {
       icon: IconMail,
-      content: "alfredoamadeo71@gmail.com",
-      href: "mailto:alfredoamadeo71@gmail.com",
-    },
-    {
-      icon: IconPhone,
-      content: "+63 9762006526",
-      href: "tel:+63976200652",
+      content: "amadeoalfredo.dev@gmail.com",
+      href: "mailto:amadeoalfredo.dev@gmail.com",
     },
     {
       icon: IconMapPin,

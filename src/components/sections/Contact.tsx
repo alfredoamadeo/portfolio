@@ -1,3 +1,4 @@
+import { type FormEvent } from 'react';
 import {
   Stack,
   Title,
@@ -7,100 +8,135 @@ import {
   Box,
   SimpleGrid,
   Anchor,
+  TextInput,
+  Textarea,
+  Button,
+  ActionIcon,
 } from '@mantine/core';
-import {
-  IconMail,
-  IconPhone,
-  IconMapPin,
-} from '@tabler/icons-react';
+import { IconMail, IconSend } from '@tabler/icons-react';
 import { profileData } from '../../config/profile';
-import Map, { Marker } from 'react-map-gl/mapbox';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
 export function Contact() {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const firstName = formData.get('firstName');
+    const lastName = formData.get('lastName');
+    const email = formData.get('email');
+    const message = formData.get('message');
+
+    const firstNameValue = typeof firstName === 'string' ? firstName : '';
+    const lastNameValue = typeof lastName === 'string' ? lastName : '';
+    const emailValue = typeof email === 'string' ? email : '';
+    const messageValue = typeof message === 'string' ? message : '';
+
+    const subject = 'Portfolio contact';
+    const bodyLines = [
+      `Name: ${`${firstNameValue} ${lastNameValue}`.trim()}`,
+      `Email: ${emailValue}`,
+      '',
+      messageValue,
+    ];
+
+    const body = bodyLines.join('\n');
+
+    window.location.href = `mailto:${profileData.contacts[0].content}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <Stack gap="xl">
-      <Box>
-        <Title order={1} size="h2" mb="md">
-          Contact
-        </Title>
-        <Text size="lg" c="dimmed" mb="lg">
-          Have a project in mind or want to collaborate? I'd love to hear from you!
-        </Text>
-      </Box>
-
       <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
-        {/* Map showing the address location */}
         <Card shadow="sm" padding="lg" radius="md" withBorder>
-          <Title order={3} size="h4" mb="md">
-            Location
-          </Title>
-          <Box style={{ height: '300px', width: '100%' }}>
-            <Map
-              mapboxAccessToken="pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw"
-              longitude={profileData.contacts[2].longitude!}
-              latitude={profileData.contacts[2].latitude!}
-              zoom={10}
-              mapStyle="mapbox://styles/mapbox/streets-v9"
-              style={{ width: '100%', height: '100%' }}
-            >
-              <Marker 
-                longitude={profileData.contacts[2].longitude!} 
-                latitude={profileData.contacts[2].latitude!}
-              >
-                <div style={{ 
-                  width: '20px', 
-                  height: '20px', 
-                  backgroundColor: 'red', 
-                  borderRadius: '50%',
-                  border: '2px solid white',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
-                }} />
-              </Marker>
-            </Map>
-          </Box>
-          <Text size="sm" mt="sm" c="dimmed">
-            {profileData.contacts[2].content}
-          </Text>
-        </Card>
-        {/* Contact Information */}
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-          <Title order={3} size="h4" mb="md">
-            Contact Information
-          </Title>
-          <Stack gap="lg">
-            {profileData.contacts.map((contact, index) => {
-              const IconComponent = contact.icon;
-              return (
-                <Group key={index} gap="md">
-                  <IconComponent size={20} />
-                  <Box>
-                    <Text fw={500} size="sm">
-                      {contact.icon === IconMail ? 'Email' : 
-                       contact.icon === IconPhone ? 'Phone' : 
-                       contact.icon === IconMapPin ? 'Location' : 'Contact'}
-                    </Text>
-                    {contact.href ? (
-                      <Anchor href={contact.href} size="sm">
-                        {contact.content}
-                      </Anchor>
-                    ) : (
-                      <Text size="sm">{contact.content}</Text>
-                    )}
-                  </Box>
-                </Group>
-              );
-            })}
-          </Stack>
+          <Stack gap="lg" style={{ height: '100%' }}>
+            <Box>
+              <Title order={1} size="h3" mb="md">
+                Get in Touch
+              </Title>
+              <Text size="md" mb="xs">
+                I'd like to hear from you!
+              </Text>
+              <Text size="sm" c="dimmed" mb="lg">
+                If you have any inquiries or just want to say hi, please use the contact form.
+              </Text>
+            </Box>
 
-          <Box mt="xl">
-            <Text fw={500} size="sm" mb="md">
-              Response Time
-            </Text>
-            <Text size="sm" c="dimmed">
-              I typically respond to messages within 24 hours. For urgent inquiries,
-              please call or send an email with "URGENT" in the subject line.
-            </Text>
+            <Group gap="md" align="flex-start">
+              <IconMail size={20} />
+              <Box>
+                <Text fw={500} size="sm">
+                  Email
+                </Text>
+                <Anchor href={profileData.contacts[0].href} size="sm">
+                  {profileData.contacts[0].content}
+                </Anchor>
+              </Box>
+            </Group>
+
+            <Box style={{ marginTop: "25%" }}>
+              <Text fw={500} size="md" mb="sm">
+                Social Media
+              </Text>
+
+              <Group justify="left" gap="md">
+                {profileData.socials.map((social) => {
+                  const SocialIcon = social.icon;
+                  return (
+                    <ActionIcon
+                      key={social.href}
+                      component="a"
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="light"
+                      radius="xl"
+                      size="lg"
+                    >
+                      <SocialIcon size={18} />
+                    </ActionIcon>
+                  );
+                })}
+              </Group>
+            </Box>
+          </Stack>
+        </Card>
+
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+          <Title order={3} size="h4" mb="md">
+            Contact Form
+          </Title>
+          <Box component="form" onSubmit={handleSubmit}>
+            <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md" mb="md">
+              <TextInput label="First Name" name="firstName" placeholder="First Name" />
+              <TextInput label="Last Name" name="lastName" placeholder="Last Name" />
+            </SimpleGrid>
+
+            <TextInput
+              label="Email"
+              name="email"
+              placeholder="email@example.com"
+              type="email"
+              required
+              mb="md"
+            />
+
+            <Textarea
+              label="Message"
+              name="message"
+              placeholder="Write your message here..."
+              minRows={4}
+              autosize
+              mb="md"
+            />
+
+            <Group justify="flex-end">
+              <Button type="submit" radius="xs" variant="filled" >
+                <IconSend size={16} style={{ marginRight: "8px" }} />
+                Send
+              </Button>
+            </Group>
           </Box>
         </Card>
       </SimpleGrid>

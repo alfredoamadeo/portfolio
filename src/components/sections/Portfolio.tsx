@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Stack,
   Title,
@@ -10,14 +11,51 @@ import {
   Button,
   Box,
   Anchor,
+  Modal,
 } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
-import { IconExternalLink, IconBrandGithub } from '@tabler/icons-react';
+import {
+  IconExternalLink,
+  IconBrandGithub,
+  IconChevronLeft,
+  IconChevronRight,
+} from '@tabler/icons-react';
 import { projects } from '../../data';
 import '@mantine/carousel/styles.css';
 
 export function Portfolio() {
+  const [previewImages, setPreviewImages] = useState<string[]>([]);
+  const [previewIndex, setPreviewIndex] = useState(0);
+
+  const handleOpenPreview = (images: string[], index: number) => {
+    setPreviewImages(images);
+    setPreviewIndex(index);
+  };
+
+  const handleClosePreview = () => {
+    setPreviewImages([]);
+    setPreviewIndex(0);
+  };
+
+  const handleNextPreview = () => {
+    if (previewImages.length === 0) {
+      return;
+    }
+
+    setPreviewIndex((current) => (current + 1) % previewImages.length);
+  };
+
+  const handlePreviousPreview = () => {
+    if (previewImages.length === 0) {
+      return;
+    }
+
+    setPreviewIndex((current) =>
+      current === 0 ? previewImages.length - 1 : current - 1,
+    );
+  };
+
   return (
     <Stack gap="xl">
       <Box>
@@ -29,10 +67,46 @@ export function Portfolio() {
         </Text>
       </Box>
 
-      <SimpleGrid
-        cols={{ base: 1, sm: 2, lg: 3 }}
-        spacing="lg"
+      <Modal
+        opened={previewImages.length > 0}
+        onClose={handleClosePreview}
+        withCloseButton
+        centered
+        size="lg"
       >
+        {previewImages.length > 0 && (
+          <Stack gap="md">
+            <Image
+              src={previewImages[previewIndex]}
+              alt="Project preview"
+              radius="md"
+              fallbackSrc="https://placehold.co/800x450?text=Project+Image"
+            />
+            {previewImages.length > 1 && (
+              <Group justify="space-between">
+                <Button
+                  variant="subtle"
+                  leftSection={<IconChevronLeft size={16} />}
+                  onClick={handlePreviousPreview}
+                  size="xs"
+                >
+                  Previous
+                </Button>
+                <Button
+                  variant="subtle"
+                  rightSection={<IconChevronRight size={16} />}
+                  onClick={handleNextPreview}
+                  size="xs"
+                >
+                  Next
+                </Button>
+              </Group>
+            )}
+          </Stack>
+        )}
+      </Modal>
+
+      <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
         {projects.map((project) => (
           <Card
             key={project.id}
@@ -51,22 +125,32 @@ export function Portfolio() {
                 >
                   {project.images.map((src, i) => (
                     <Carousel.Slide key={i}>
-                      <Image
-                        src={src}
-                        height={200}
-                        alt={`${project.title} ${i + 1}`}
-                        fallbackSrc="https://placehold.co/400x200?text=Project+Image"
-                      />
+                      <Box
+                        onClick={() => handleOpenPreview(project.images, i)}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <Image
+                          src={src}
+                          height={200}
+                          alt={`${project.title} ${i + 1}`}
+                          fallbackSrc="https://placehold.co/400x200?text=Project+Image"
+                        />
+                      </Box>
                     </Carousel.Slide>
                   ))}
                 </Carousel>
               ) : (
-                <Image
-                  src={project.images[0]}
-                  height={200}
-                  alt={project.title}
-                  fallbackSrc="https://placehold.co/400x200?text=Project+Image"
-                />
+                <Box
+                  onClick={() => handleOpenPreview(project.images, 0)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <Image
+                    src={project.images[0]}
+                    height={200}
+                    alt={project.title}
+                    fallbackSrc="https://placehold.co/400x200?text=Project+Image"
+                  />
+                </Box>
               )}
             </Card.Section>
 
