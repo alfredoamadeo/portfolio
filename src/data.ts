@@ -26,7 +26,7 @@ export const projects: Project[] = [
     description: 'A web-based application for MKT-Group to streamline the management of their business. It is a platform for MKT-Group to manage their business and customers.',
     images: ['/mktgroup-1.png', '/mktgroup-2.png', '/mktgroup-3.png', '/mktgroup-4.png'],
     tags: ['.NET', 'React.ts', 'MSSQL'],
-    liveUrl: '/maintenance',
+    liveUrl: 'https://test.mktgroup.org/',
     codeUrl: '/maintenance'
   },
   {
