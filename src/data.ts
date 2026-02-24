@@ -6,7 +6,7 @@ export const projects: Project[] = [
     id: '1',
     title: 'Enhanced Account Receivables Management System',
     description: 'A web-based application for internal use to streamline the management of docket cases, collection tasks, and receivable monitoring from registered individuals and businesses with outstanding tax obligations.',
-    images: ['/public/arms_project.png', '/public/arms_project-2.png'],
+    images: ['/arms_project.png', '/arms_project-2.png'],
     tags: ['VUE.JS', '.NET', 'MySQL'],
     liveUrl: '/maintenance',
     codeUrl: '/maintenance'
@@ -15,7 +15,7 @@ export const projects: Project[] = [
     id: '2',
     title: 'Financial Management Information System',
     description: 'A Web-based application for Metropolitan Water & Sewerage System to streamline financial management Information Process',
-    images: ['/public/fmis_project.png', '/public/fmis_project-2.png'],
+    images: ['/fmis_project.png', '/fmis_project-2.png'],
     tags: ['React.ts', '.NET', 'MSSQL'],
     liveUrl: '/maintenance',
     codeUrl: '/maintenance'
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     id: '3',
     title: 'MKT-Group Web Application',
     description: 'A web-based application for MKT-Group to streamline the management of their business. It is a platform for MKT-Group to manage their business and customers.',
-    images: ['/public/mktgroup-1.png', '/public/mktgroup-2.png', '/public/mktgroup-3.png', '/public/mktgroup-4.png'],
+    images: ['/mktgroup-1.png', '/mktgroup-2.png', '/mktgroup-3.png', '/mktgroup-4.png'],
     tags: ['.NET', 'React.ts', 'MSSQL'],
     liveUrl: '/maintenance',
     codeUrl: '/maintenance'
@@ -33,7 +33,7 @@ export const projects: Project[] = [
     id: '4',
     title: 'OMMS-Next',
     description: 'A web-based platform for OMMS-Next that serves as an accounting and merchandising system, helping manage sales, customers, and business operations in a streamlined way.',
-    images: ['/public/omms-1.png', '/public/omms-2.png', '/public/omms-3.png'],
+    images: ['/omms-1.png', '/omms-2.png', '/omms-3.png'],
     tags: ['.NET', 'React.ts', 'MSSQL'],
     liveUrl: '/maintenance',
     codeUrl: '/maintenance'
